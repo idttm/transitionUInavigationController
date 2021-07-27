@@ -8,19 +8,13 @@
 import UIKit
 import Hero
 
-
-
 class CollectionViewController: UICollectionViewController {
 
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-     
+        hero.isEnabled = true
         
     }
-
-
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
         // #warning Incomplete implementation, return the number of sections
@@ -37,13 +31,11 @@ class CollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         
         cell.backgroundColor = .red
-        
+    
         cell.heroID = nil
     
         return cell
     }
-    
-    
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.visibleCells.forEach { cell in
@@ -53,12 +45,17 @@ class CollectionViewController: UICollectionViewController {
 
         cell.heroID = "view"
         let viewcontroller2 = ViewController()
+        viewcontroller2.hero.isEnabled = true
+        viewcontroller2.view.heroID = "view"
         viewcontroller2.heroModalAnimationType = .zoom
         viewcontroller2.modalPresentationStyle = .fullScreen
+        
         self.navigationController?.present(viewcontroller2, animated: true, completion: nil)
     }
 
 }
+
+
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let itemsPerRow: CGFloat = 2
