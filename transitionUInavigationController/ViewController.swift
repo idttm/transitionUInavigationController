@@ -14,10 +14,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hero.isEnabled = true
-//        self.redView.hero.isEnabled = true
-//        view.heroID = "view"
-        view.backgroundColor = .green
+        self.isHeroEnabled = true
+        view.heroID = "id"
+        view.backgroundColor = .red
 //        redView.backgroundColor = .gray
 //        view.hero.modifiers = [.translate(y:100)]
         // Do any additional setup after loading the view.

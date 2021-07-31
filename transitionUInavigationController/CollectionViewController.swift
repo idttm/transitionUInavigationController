@@ -12,7 +12,7 @@ class CollectionViewController: UICollectionViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        hero.isEnabled = true
+        self.isHeroEnabled = true
         
     }
 
@@ -41,16 +41,24 @@ class CollectionViewController: UICollectionViewController {
         collectionView.visibleCells.forEach { cell in
             cell.heroID = nil
         }
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-
-        cell.heroID = "view"
-        let viewcontroller2 = ViewController()
-        viewcontroller2.hero.isEnabled = true
-        viewcontroller2.view.heroID = "view"
-        viewcontroller2.heroModalAnimationType = .zoom
-        viewcontroller2.modalPresentationStyle = .fullScreen
         
-        self.navigationController?.present(viewcontroller2, animated: true, completion: nil)
+        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
+        cell.heroID = "id"
+        let viewController2 = ViewController()
+        viewController2.hero.isEnabled = true
+        viewController2.view.heroID = "id"
+        viewController2.heroModalAnimationType = .zoom
+        viewController2.modalPresentationStyle = .fullScreen
+//        navigationController?.setViewControllers([viewController2], animated: true)
+        
+//       navigationController?.pushViewController(viewController2, animated: true)
+        
+       let nav = UINavigationController(rootViewController: viewController2)
+//        present(nav, animated: true, completion: nil)
+        
+//       self.navigationController?.present(viewController2, animated: true, completion: nil)
+       hero.replaceViewController(with: viewController2)
+//       navigationController?.pushViewController(viewController2, animated: true)
     }
 
 }
