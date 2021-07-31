@@ -7,18 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3E6B358426B574A500B0BBCD /* DetailTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B358326B574A500B0BBCD /* DetailTransition.swift */; };
+		3E6B358626B57CB900B0BBCD /* CastomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E6B358526B57CB900B0BBCD /* CastomCell.swift */; };
 		3EDE21EB26A9BA8700841821 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE21EA26A9BA8700841821 /* AppDelegate.swift */; };
 		3EDE21ED26A9BA8700841821 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE21EC26A9BA8700841821 /* SceneDelegate.swift */; };
 		3EDE21F226A9BA8700841821 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EDE21F026A9BA8700841821 /* Main.storyboard */; };
 		3EDE21F426A9BA8D00841821 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3EDE21F326A9BA8D00841821 /* Assets.xcassets */; };
 		3EDE21F726A9BA8D00841821 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3EDE21F526A9BA8D00841821 /* LaunchScreen.storyboard */; };
 		3EDE220026AACA8F00841821 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE21FF26AACA8F00841821 /* CollectionViewController.swift */; };
-		3EDE220226AAEA9700841821 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE220126AAEA9700841821 /* ViewController.swift */; };
+		3EDE220226AAEA9700841821 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDE220126AAEA9700841821 /* DetailViewController.swift */; };
 		7D51EAA37BA2DECC3DA5743E /* Pods_transitionUInavigationController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21CC29629EC9ABACBBC96075 /* Pods_transitionUInavigationController.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		21CC29629EC9ABACBBC96075 /* Pods_transitionUInavigationController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_transitionUInavigationController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E6B358326B574A500B0BBCD /* DetailTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTransition.swift; sourceTree = "<group>"; };
+		3E6B358526B57CB900B0BBCD /* CastomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CastomCell.swift; sourceTree = "<group>"; };
 		3EDE21E726A9BA8700841821 /* transitionUInavigationController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = transitionUInavigationController.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3EDE21EA26A9BA8700841821 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3EDE21EC26A9BA8700841821 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -27,7 +31,7 @@
 		3EDE21F626A9BA8D00841821 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3EDE21F826A9BA8D00841821 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3EDE21FF26AACA8F00841821 /* CollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewController.swift; sourceTree = "<group>"; };
-		3EDE220126AAEA9700841821 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		3EDE220126AAEA9700841821 /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		C6486934C010538C7AD14929 /* Pods-transitionUInavigationController.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transitionUInavigationController.release.xcconfig"; path = "Target Support Files/Pods-transitionUInavigationController/Pods-transitionUInavigationController.release.xcconfig"; sourceTree = "<group>"; };
 		EF5081019CACE1C2806439C7 /* Pods-transitionUInavigationController.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-transitionUInavigationController.debug.xcconfig"; path = "Target Support Files/Pods-transitionUInavigationController/Pods-transitionUInavigationController.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -85,7 +89,9 @@
 				3EDE21EA26A9BA8700841821 /* AppDelegate.swift */,
 				3EDE21EC26A9BA8700841821 /* SceneDelegate.swift */,
 				3EDE21FF26AACA8F00841821 /* CollectionViewController.swift */,
-				3EDE220126AAEA9700841821 /* ViewController.swift */,
+				3EDE220126AAEA9700841821 /* DetailViewController.swift */,
+				3E6B358326B574A500B0BBCD /* DetailTransition.swift */,
+				3E6B358526B57CB900B0BBCD /* CastomCell.swift */,
 				3EDE21F026A9BA8700841821 /* Main.storyboard */,
 				3EDE21F326A9BA8D00841821 /* Assets.xcassets */,
 				3EDE21F526A9BA8D00841821 /* LaunchScreen.storyboard */,
@@ -209,8 +215,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3EDE220026AACA8F00841821 /* CollectionViewController.swift in Sources */,
+				3E6B358426B574A500B0BBCD /* DetailTransition.swift in Sources */,
 				3EDE21EB26A9BA8700841821 /* AppDelegate.swift in Sources */,
-				3EDE220226AAEA9700841821 /* ViewController.swift in Sources */,
+				3EDE220226AAEA9700841821 /* DetailViewController.swift in Sources */,
+				3E6B358626B57CB900B0BBCD /* CastomCell.swift in Sources */,
 				3EDE21ED26A9BA8700841821 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

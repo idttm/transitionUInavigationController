@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
 
         let nav = UINavigationController(rootViewController: CollectionViewController())
-        nav.hero.isEnabled = true
         window?.rootViewController = nav
        
         return true

@@ -10,9 +10,14 @@ import Hero
 
 class CollectionViewController: UICollectionViewController {
 
+    fileprivate var currentAnimationTransition: UIViewControllerAnimatedTransitioning? = nil
+    fileprivate var lastSelectedIndexPath: IndexPath? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.isHeroEnabled = true
+        collectionView.register(CastomCell.self, forCellWithReuseIdentifier: CastomCell.identifier)
+        
+        navigationController?.delegate = self
         
     }
 
@@ -28,40 +33,107 @@ class CollectionViewController: UICollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        let cell = self.collectionView.dequeueReusableCell(withReuseIdentifier: CastomCell.identifier, for: indexPath) as! CastomCell
+        cell.imageView.image = UIImage.init(named: "image")
         
-        cell.backgroundColor = .red
-    
-        cell.heroID = nil
-    
+        
         return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.visibleCells.forEach { cell in
-            cell.heroID = nil
-        }
-        
-        guard let cell = collectionView.cellForItem(at: indexPath) else { return }
-        cell.heroID = "id"
-        let viewController2 = ViewController()
-        viewController2.hero.isEnabled = true
-        viewController2.view.heroID = "id"
-        viewController2.heroModalAnimationType = .zoom
-        viewController2.modalPresentationStyle = .fullScreen
-//        navigationController?.setViewControllers([viewController2], animated: true)
-        
-//       navigationController?.pushViewController(viewController2, animated: true)
-        
-       let nav = UINavigationController(rootViewController: viewController2)
-//        present(nav, animated: true, completion: nil)
-        
-//       self.navigationController?.present(viewController2, animated: true, completion: nil)
-       hero.replaceViewController(with: viewController2)
-//       navigationController?.pushViewController(viewController2, animated: true)
+        self.lastSelectedIndexPath = indexPath
+        let photoDetailVC = DetailViewController(image: UIImage.init(named: "image")!)
+        self.navigationController?.pushViewController(photoDetailVC, animated: true)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CastomCell
+        cell.setHighlighted(true)
+    }
+
+    override func collectionView(_ collectionView: UICollectionView, didUnhighlightItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! CastomCell
+        cell.setHighlighted(false)
     }
 
 }
+
+extension CollectionViewController: DetailTransitionAnimatorDelegate {
+    func transitionWillStart() {
+        guard let lastSelected = self.lastSelectedIndexPath else { return }
+        self.collectionView.cellForItem(at: lastSelected)?.isHidden = true
+    }
+
+    func transitionDidEnd() {
+        guard let lastSelected = self.lastSelectedIndexPath else { return }
+        self.collectionView.cellForItem(at: lastSelected)?.isHidden = false
+    }
+
+    func referenceImage() -> UIImage? {
+        guard
+            let lastSelected = self.lastSelectedIndexPath,
+            let cell = self.collectionView.cellForItem(at: lastSelected) as? CastomCell
+        else {
+            return nil
+        }
+
+        return cell.image
+    }
+
+    func imageFrame() -> CGRect? {
+        guard
+            let lastSelected = self.lastSelectedIndexPath,
+            let cell = self.collectionView.cellForItem(at: lastSelected)
+        else {
+            return nil
+        }
+
+        return self.collectionView.convert(cell.frame, to: self.view)
+    }
+}
+
+extension CollectionViewController: UINavigationControllerDelegate {
+
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationController.Operation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        
+        let result: UIViewControllerAnimatedTransitioning?
+        if
+            let photoDetailVC = toVC as? DetailViewController,
+            operation == .push
+        {
+            result = DetailPushTransition(fromDelegate: fromVC, toPhotoDetailVC: photoDetailVC)
+        } else if
+            let photoDetailVC = fromVC as? DetailViewController,
+            operation == .pop
+        {
+                result = DetailPopTransition(toDelegate: toVC, fromPhotoDetailVC: photoDetailVC)
+        } else {
+            result = nil
+        }
+        self.currentAnimationTransition = result
+        return result
+    }
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        interactionControllerFor animationController: UIViewControllerAnimatedTransitioning
+    ) -> UIViewControllerInteractiveTransitioning? {
+        return self.currentAnimationTransition as? UIViewControllerInteractiveTransitioning
+    }
+    
+    public func navigationController(
+        _ navigationController: UINavigationController,
+        didShow viewController: UIViewController,
+        animated: Bool
+    ) {
+        self.currentAnimationTransition = nil
+    }
+}
+
 
 
 extension CollectionViewController: UICollectionViewDelegateFlowLayout {
