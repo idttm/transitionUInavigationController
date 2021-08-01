@@ -11,25 +11,8 @@ import Photos
 
 class DetailViewController: UIViewController {
     
-    private let imageView = UIImageView()
-    private let imageManager = PHCachingImageManager()
+    var imageView = UIImageView()
     
-    init(image: UIImage) {
-
-        super.init(nibName: nil, bundle: nil)
-
-        self.imageView.contentMode = .scaleAspectFit
-        self.imageView.backgroundColor = .white
-        self.imageView.accessibilityIgnoresInvertColors = true
-        self.view.backgroundColor = .white
-        self.imageView.image = image
-
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 

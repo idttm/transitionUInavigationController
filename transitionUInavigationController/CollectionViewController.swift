@@ -42,7 +42,8 @@ class CollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.lastSelectedIndexPath = indexPath
-        let photoDetailVC = DetailViewController(image: UIImage.init(named: "image")!)
+        let photoDetailVC = DetailViewController()
+        photoDetailVC.imageView.image = UIImage.init(named: "image")
         self.navigationController?.pushViewController(photoDetailVC, animated: true)
     }
     
@@ -55,7 +56,6 @@ class CollectionViewController: UICollectionViewController {
         let cell = collectionView.cellForItem(at: indexPath) as! CastomCell
         cell.setHighlighted(false)
     }
-
 }
 
 extension CollectionViewController: DetailTransitionAnimatorDelegate {
